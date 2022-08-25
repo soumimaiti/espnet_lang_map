@@ -15,7 +15,7 @@ if [ "${fs}" -eq 48000 ]; then
     # To suppress recreation, specify wav format
     opts="--audio_format wav "
 else
-    opts="--audio_format flac "
+    opts="--audio_format wav "
 fi
 
 train_set=tr_no_dev

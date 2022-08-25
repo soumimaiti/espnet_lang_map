@@ -1,15 +1,11 @@
 import pytest
 import torch
 
-from espnet2.enh.loss.criterions.time_domain import (
-    CISDRLoss,
-    MultiResL1SpecLoss,
-    SDRLoss,
-    SISNRLoss,
-    SNRLoss,
-    TimeDomainL1,
-    TimeDomainMSE,
-)
+from espnet2.enh.loss.criterions.time_domain import (CISDRLoss,
+                                                     MultiResL1SpecLoss,
+                                                     SDRLoss, SISNRLoss,
+                                                     SNRLoss, TimeDomainL1,
+                                                     TimeDomainMSE)
 
 
 @pytest.mark.parametrize(

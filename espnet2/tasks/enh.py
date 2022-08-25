@@ -19,21 +19,15 @@ from espnet2.enh.encoder.null_encoder import NullEncoder
 from espnet2.enh.encoder.stft_encoder import STFTEncoder
 from espnet2.enh.espnet_model import ESPnetEnhancementModel
 from espnet2.enh.loss.criterions.abs_loss import AbsEnhLoss
-from espnet2.enh.loss.criterions.tf_domain import (
-    FrequencyDomainAbsCoherence,
-    FrequencyDomainDPCL,
-    FrequencyDomainL1,
-    FrequencyDomainMSE,
-)
-from espnet2.enh.loss.criterions.time_domain import (
-    CISDRLoss,
-    MultiResL1SpecLoss,
-    SDRLoss,
-    SISNRLoss,
-    SNRLoss,
-    TimeDomainL1,
-    TimeDomainMSE,
-)
+from espnet2.enh.loss.criterions.tf_domain import (FrequencyDomainAbsCoherence,
+                                                   FrequencyDomainDPCL,
+                                                   FrequencyDomainL1,
+                                                   FrequencyDomainMSE)
+from espnet2.enh.loss.criterions.time_domain import (CISDRLoss,
+                                                     MultiResL1SpecLoss,
+                                                     SDRLoss, SISNRLoss,
+                                                     SNRLoss, TimeDomainL1,
+                                                     TimeDomainMSE)
 from espnet2.enh.loss.wrappers.abs_wrapper import AbsLossWrapper
 from espnet2.enh.loss.wrappers.dpcl_solver import DPCLSolver
 from espnet2.enh.loss.wrappers.fixed_order import FixedOrderSolver
@@ -63,7 +57,8 @@ from espnet2.torch_utils.initialize import initialize
 from espnet2.train.class_choices import ClassChoices
 from espnet2.train.collate_fn import CommonCollateFn
 from espnet2.train.distributed_utils import DistributedOption
-from espnet2.train.preprocessor import DynamicMixingPreprocessor, EnhPreprocessor
+from espnet2.train.preprocessor import (DynamicMixingPreprocessor,
+                                        EnhPreprocessor)
 from espnet2.train.trainer import Trainer
 from espnet2.utils.get_default_kwargs import get_default_kwargs
 from espnet2.utils.nested_dict_action import NestedDictAction

@@ -1,9 +1,8 @@
 import pytest
 import torch
 
-from espnet2.asr.postencoder.hugging_face_transformers_postencoder import (
-    HuggingFaceTransformersPostEncoder,
-)
+from espnet2.asr.postencoder.hugging_face_transformers_postencoder import \
+    HuggingFaceTransformersPostEncoder
 
 
 @pytest.mark.parametrize(

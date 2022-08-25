@@ -8,7 +8,7 @@
 #                  TTS MODEL SETTING                     #
 ##########################################################
 tts: transformer           # model architecture
-tts_conf:                  # keyword arguments for the selected model
+tts_conf: # keyword arguments for the selected model
     embed_dim: 0           # embedding dimension in encoder prenet
     eprenet_conv_layers: 0 # number of conv layers in encoder prenet
                            # if set to 0, no encoder prenet will be used

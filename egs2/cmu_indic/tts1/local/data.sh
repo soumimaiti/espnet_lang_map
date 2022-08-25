@@ -19,7 +19,7 @@ log "$0 $*"
 spk=$1
 
 available_spks=(
-    "hin_ab" "tel_ss" "tam_sdr" "kan_plv" "mar_slp" "guj_dp" "ben_rm"
+     "hin_ab" "tel_ss" "tel_kpn" "tel_sk" "tam_sdr" "kan_plv" "mar_slp" "mar_aup" "guj_dp" "guj_ad" "guj_kt" "ben_rm" "pan_amp" "all"
 )
 
 # check arguments
@@ -48,16 +48,28 @@ eval_set=${spk}_eval
 
 if [ ${stage} -le -1 ] && [ ${stop_stage} -ge -1 ]; then
     log "stage -1: Data Download"
-    local/data_download.sh "${db_root}" "${spk}"
+    if [ ${spk} == "all" ] ; then
+        local/data_download_all.sh "${db_root}"
+    else
+        local/data_download.sh "${db_root}" "${spk}"
+    fi
 fi
 
 if [ ${stage} -le 0 ] && [ ${stop_stage} -ge 0 ]; then
     log "stage 0: local/data_prep.sh"
     # Initial normalization of the data
     # Doesn't change sampling frequency and it's done after stages
-    local/data_prep.sh \
+    if [ ${spk} == "all" ] ; then
+        local/data_prep_all.sh \
+            --train_set "${train_set}" \
+            --dev_set "${dev_set}" \
+            --eval_set "${eval_set}" \
+            "${db_root}/cmu_indic_${spk}_22"
+    else
+        local/data_prep.sh \
         --train_set "${train_set}" \
         --dev_set "${dev_set}" \
         --eval_set "${eval_set}" \
         "${db_root}/cmu_indic_${spk}" "${spk}"
+    fi
 fi

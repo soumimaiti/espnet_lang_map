@@ -8,9 +8,8 @@ from typing import Sequence
 import torch
 from typeguard import check_argument_types
 
-from espnet.nets.pytorch_backend.transformer.attention import (
-    MultiHeadedAttention as BaseMultiHeadedAttention,
-)
+from espnet.nets.pytorch_backend.transformer.attention import \
+    MultiHeadedAttention as BaseMultiHeadedAttention
 
 
 class StyleEncoder(torch.nn.Module):

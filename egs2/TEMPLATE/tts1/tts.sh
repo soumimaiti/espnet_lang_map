@@ -8,7 +8,7 @@
 set -e
 set -u
 set -o pipefail
-
+set -evx
 log() {
     local fname=${BASH_SOURCE[1]##*/}
     echo -e "$(date '+%Y-%m-%dT%H:%M:%S') (${fname}:${BASH_LINENO[0]}:${FUNCNAME[1]}) $*"

@@ -14,22 +14,16 @@ from espnet2.asr.decoder.transformer_decoder import (
     DynamicConvolution2DTransformerDecoder,
     DynamicConvolutionTransformerDecoder,
     LightweightConvolution2DTransformerDecoder,
-    LightweightConvolutionTransformerDecoder,
-    TransformerDecoder,
-)
+    LightweightConvolutionTransformerDecoder, TransformerDecoder)
 from espnet2.asr.encoder.abs_encoder import AbsEncoder
 from espnet2.asr.encoder.branchformer_encoder import BranchformerEncoder
 from espnet2.asr.encoder.conformer_encoder import ConformerEncoder
-from espnet2.asr.encoder.contextual_block_conformer_encoder import (
-    ContextualBlockConformerEncoder,
-)
-from espnet2.asr.encoder.contextual_block_transformer_encoder import (
-    ContextualBlockTransformerEncoder,
-)
-from espnet2.asr.encoder.hubert_encoder import (
-    FairseqHubertEncoder,
-    FairseqHubertPretrainEncoder,
-)
+from espnet2.asr.encoder.contextual_block_conformer_encoder import \
+    ContextualBlockConformerEncoder
+from espnet2.asr.encoder.contextual_block_transformer_encoder import \
+    ContextualBlockTransformerEncoder
+from espnet2.asr.encoder.hubert_encoder import (FairseqHubertEncoder,
+                                                FairseqHubertPretrainEncoder)
 from espnet2.asr.encoder.longformer_encoder import LongformerEncoder
 from espnet2.asr.encoder.rnn_encoder import RNNEncoder
 from espnet2.asr.encoder.transformer_encoder import TransformerEncoder
@@ -43,9 +37,8 @@ from espnet2.asr.frontend.s3prl import S3prlFrontend
 from espnet2.asr.frontend.windowing import SlidingWindow
 from espnet2.asr.maskctc_model import MaskCTCModel
 from espnet2.asr.postencoder.abs_postencoder import AbsPostEncoder
-from espnet2.asr.postencoder.hugging_face_transformers_postencoder import (
-    HuggingFaceTransformersPostEncoder,
-)
+from espnet2.asr.postencoder.hugging_face_transformers_postencoder import \
+    HuggingFaceTransformersPostEncoder
 from espnet2.asr.preencoder.abs_preencoder import AbsPreEncoder
 from espnet2.asr.preencoder.linear import LinearProjection
 from espnet2.asr.preencoder.sinc import LightweightSincConvs
@@ -66,7 +59,8 @@ from espnet2.train.preprocessor import CommonPreprocessor
 from espnet2.train.trainer import Trainer
 from espnet2.utils.get_default_kwargs import get_default_kwargs
 from espnet2.utils.nested_dict_action import NestedDictAction
-from espnet2.utils.types import float_or_none, int_or_none, str2bool, str_or_none
+from espnet2.utils.types import (float_or_none, int_or_none, str2bool,
+                                 str_or_none)
 
 frontend_choices = ClassChoices(
     name="frontend",

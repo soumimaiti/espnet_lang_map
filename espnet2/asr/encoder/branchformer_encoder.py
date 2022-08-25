@@ -23,26 +23,16 @@ from espnet2.asr.layers.cgmlp import ConvolutionalGatingMLP
 from espnet2.asr.layers.fastformer import FastSelfAttention
 from espnet.nets.pytorch_backend.nets_utils import make_pad_mask
 from espnet.nets.pytorch_backend.transformer.attention import (  # noqa: H301
-    LegacyRelPositionMultiHeadedAttention,
-    MultiHeadedAttention,
-    RelPositionMultiHeadedAttention,
-)
+    LegacyRelPositionMultiHeadedAttention, MultiHeadedAttention,
+    RelPositionMultiHeadedAttention)
 from espnet.nets.pytorch_backend.transformer.embedding import (  # noqa: H301
-    LegacyRelPositionalEncoding,
-    PositionalEncoding,
-    RelPositionalEncoding,
-    ScaledPositionalEncoding,
-)
+    LegacyRelPositionalEncoding, PositionalEncoding, RelPositionalEncoding,
+    ScaledPositionalEncoding)
 from espnet.nets.pytorch_backend.transformer.layer_norm import LayerNorm
 from espnet.nets.pytorch_backend.transformer.repeat import repeat
 from espnet.nets.pytorch_backend.transformer.subsampling import (
-    Conv2dSubsampling,
-    Conv2dSubsampling2,
-    Conv2dSubsampling6,
-    Conv2dSubsampling8,
-    TooShortUttError,
-    check_short_utt,
-)
+    Conv2dSubsampling, Conv2dSubsampling2, Conv2dSubsampling6,
+    Conv2dSubsampling8, TooShortUttError, check_short_utt)
 
 
 class BranchformerEncoderLayer(torch.nn.Module):

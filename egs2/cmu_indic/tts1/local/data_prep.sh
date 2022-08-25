@@ -44,6 +44,7 @@ set -euo pipefail
 # set filenames
 scp=data/${spk}/wav.scp
 utt2spk=data/${spk}/utt2spk
+utt2lang=data/${spk}/utt2lang
 text=data/${spk}/text
 segments=data/${spk}/segments
 spk2utt=data/${spk}/spk2utt
@@ -51,14 +52,18 @@ spk2utt=data/${spk}/spk2utt
 # check file existence
 [ -e "${scp}" ] && rm "${scp}"
 [ -e "${utt2spk}" ] && rm "${utt2spk}"
+#[ -e "${utt2lang}" ] && rm "${utt2lang}"
 [ -e "${text}" ] && rm "${text}"
 [ -e "${segments}" ] && rm "${segments}"
-
-# make scp, utt2spk, and spk2utt
+echo $spk
+lid=$(echo "${spk}" | awk -F_ '{print $1}')
+echo $lid
+# make scp, utt2spk, and spk2utt, utt2lang
 find ${db} -name "*.wav" -follow | sort | while read -r filename;do
     id="${spk}_$(basename ${filename} | sed -e "s/\.[^\.]*$//g")"
     echo "${id} ${filename}" >> ${scp}
     echo "${id} ${spk}" >> ${utt2spk}
+    echo "${id} ${lid}" >> ${utt2lang}
 done
 echo "Successfully finished making wav.scp, utt2spk."
 

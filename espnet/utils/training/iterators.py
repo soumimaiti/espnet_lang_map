@@ -1,6 +1,7 @@
 import chainer
 import numpy as np
-from chainer.iterators import MultiprocessIterator, SerialIterator, ShuffleOrderSampler
+from chainer.iterators import (MultiprocessIterator, SerialIterator,
+                               ShuffleOrderSampler)
 from chainer.training.extension import Extension
 
 

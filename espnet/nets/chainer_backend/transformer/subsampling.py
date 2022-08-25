@@ -8,7 +8,8 @@ import chainer.functions as F
 import chainer.links as L
 import numpy as np
 
-from espnet.nets.chainer_backend.transformer.embedding import PositionalEncoding
+from espnet.nets.chainer_backend.transformer.embedding import \
+    PositionalEncoding
 
 
 class Conv2dSubsampling(chainer.Chain):

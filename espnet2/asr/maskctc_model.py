@@ -23,9 +23,8 @@ from espnet.nets.beam_search import Hypothesis
 from espnet.nets.e2e_asr_common import ErrorCalculator
 from espnet.nets.pytorch_backend.maskctc.add_mask_token import mask_uniform
 from espnet.nets.pytorch_backend.nets_utils import th_accuracy
-from espnet.nets.pytorch_backend.transformer.label_smoothing_loss import (  # noqa: H301
-    LabelSmoothingLoss,
-)
+from espnet.nets.pytorch_backend.transformer.label_smoothing_loss import \
+    LabelSmoothingLoss  # noqa: H301
 
 if V(torch.__version__) >= V("1.6.0"):
     from torch.cuda.amp import autocast

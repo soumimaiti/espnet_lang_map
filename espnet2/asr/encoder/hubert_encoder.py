@@ -279,9 +279,8 @@ class FairseqHubertPretrainEncoder(AbsEncoder):
             from fairseq.data.dictionary import Dictionary
             from fairseq.models.hubert.hubert import HubertConfig  # noqa: H301
             from fairseq.models.hubert.hubert import HubertModel  # noqa: H301
-            from fairseq.models.hubert.hubert import (  # noqa: H301
-                HubertPretrainingConfig,
-            )
+            from fairseq.models.hubert.hubert import \
+                HubertPretrainingConfig  # noqa: H301
         except Exception as e:
             print("Error: FairSeq is not properly installed.")
             print("Please install FairSeq: cd ${MAIN_ROOT}/tools && make fairseq.done")

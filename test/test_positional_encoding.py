@@ -2,10 +2,7 @@ import pytest
 import torch
 
 from espnet.nets.pytorch_backend.transformer.embedding import (
-    LearnableFourierPosEnc,
-    PositionalEncoding,
-    ScaledPositionalEncoding,
-)
+    LearnableFourierPosEnc, PositionalEncoding, ScaledPositionalEncoding)
 
 
 @pytest.mark.parametrize(

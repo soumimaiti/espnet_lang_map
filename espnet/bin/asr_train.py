@@ -639,9 +639,7 @@ def main(cmd_args):
             if args.backend == "chainer":
                 raise ValueError("Chainer with DDP is not supported.")
             from espnet.distributed.pytorch_backend.launch import (
-                launch,
-                set_start_method,
-            )
+                launch, set_start_method)
 
             # NOTE: it's necessary to set "spawn" as a multiprocessing
             # start method. Because, in this use case, CUDA initialization
