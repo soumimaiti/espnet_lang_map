@@ -6,15 +6,15 @@
 This code is based on https://github.com/jaywalnut310/vits.
 
 """
-
+import logging
 import math
-from typing import Tuple
+from typing import Tuple, Optional
 
 import torch
 
 from espnet.nets.pytorch_backend.conformer.encoder import Encoder
 from espnet.nets.pytorch_backend.nets_utils import make_non_pad_mask
-
+from espnet2.gan_tts.vits.lang_map import MultiLangMap
 
 class TextEncoder(torch.nn.Module):
     """Text encoder module in VITS.
@@ -49,6 +49,7 @@ class TextEncoder(torch.nn.Module):
         dropout_rate: float = 0.1,
         positional_dropout_rate: float = 0.0,
         attention_dropout_rate: float = 0.0,
+        use_lang_map: bool = False
     ):
         """Initialize TextEncoder module.
 
@@ -101,10 +102,17 @@ class TextEncoder(torch.nn.Module):
         )
         self.proj = torch.nn.Conv1d(attention_dim, attention_dim * 2, 1)
 
+        self.multi_lang_map = MultiLangMap(attention_dim, 1, dropout_rate)
+
+        self.use_lang_map = use_lang_map
+        logging.info("use_lang_map {}".format(use_lang_map))
+        
+
     def forward(
         self,
         x: torch.Tensor,
         x_lengths: torch.Tensor,
+        lids: Optional[torch.Tensor] = None,
     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
         """Calculate forward propagation.
 
@@ -128,6 +136,9 @@ class TextEncoder(torch.nn.Module):
             )
             .unsqueeze(1)
         )
+        if self.use_lang_map: 
+            x = self.multi_lang_map(x, x_lengths, lids)
+
         # encoder assume the channel last (B, T_text, attention_dim)
         # but mask shape shoud be (B, 1, T_text)
         x, _ = self.encoder(x, x_mask)

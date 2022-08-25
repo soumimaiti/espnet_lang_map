@@ -11,19 +11,15 @@ import torch
 from typeguard import check_argument_types
 
 from espnet2.gan_tts.abs_gan_tts import AbsGANTTS
-from espnet2.gan_tts.hifigan import (
-    HiFiGANMultiPeriodDiscriminator,
-    HiFiGANMultiScaleDiscriminator,
-    HiFiGANMultiScaleMultiPeriodDiscriminator,
-    HiFiGANPeriodDiscriminator,
-    HiFiGANScaleDiscriminator,
-)
-from espnet2.gan_tts.hifigan.loss import (
-    DiscriminatorAdversarialLoss,
-    FeatureMatchLoss,
-    GeneratorAdversarialLoss,
-    MelSpectrogramLoss,
-)
+from espnet2.gan_tts.hifigan import (HiFiGANMultiPeriodDiscriminator,
+                                     HiFiGANMultiScaleDiscriminator,
+                                     HiFiGANMultiScaleMultiPeriodDiscriminator,
+                                     HiFiGANPeriodDiscriminator,
+                                     HiFiGANScaleDiscriminator)
+from espnet2.gan_tts.hifigan.loss import (DiscriminatorAdversarialLoss,
+                                          FeatureMatchLoss,
+                                          GeneratorAdversarialLoss,
+                                          MelSpectrogramLoss)
 from espnet2.gan_tts.utils import get_segments
 from espnet2.gan_tts.vits.generator import VITSGenerator
 from espnet2.gan_tts.vits.loss import KLDivergenceLoss
@@ -113,6 +109,7 @@ class VITS(AbsGANTTS):
             "stochastic_duration_predictor_dropout_rate": 0.5,
             "stochastic_duration_predictor_flows": 4,
             "stochastic_duration_predictor_dds_conv_layers": 3,
+            "use_lang_map": False,
         },
         # discriminator related
         discriminator_type: str = "hifigan_multi_scale_multi_period_discriminator",

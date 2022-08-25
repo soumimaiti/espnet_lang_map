@@ -86,6 +86,7 @@ class VITSGenerator(torch.nn.Module):
         stochastic_duration_predictor_dropout_rate: float = 0.5,
         stochastic_duration_predictor_flows: int = 4,
         stochastic_duration_predictor_dds_conv_layers: int = 3,
+        use_lang_map: bool = False,
     ):
         """Initialize VITS generator module.
 
@@ -187,6 +188,7 @@ class VITSGenerator(torch.nn.Module):
             conformer_kernel_size=text_encoder_conformer_kernel_size,
             use_macaron_style=use_macaron_style_in_text_encoder,
             use_conformer_conv=use_conformer_conv_in_text_encoder,
+            use_lang_map=use_lang_map,
         )
         self.decoder = HiFiGANGenerator(
             in_channels=hidden_channels,
@@ -256,6 +258,8 @@ class VITSGenerator(torch.nn.Module):
 
         self.maximum_path = maximum_path
 
+        self.use_lang_map = use_lang_map
+
     def forward(
         self,
         text: torch.Tensor,
@@ -309,8 +313,12 @@ class VITSGenerator(torch.nn.Module):
 
         """
         # forward text encoder
-        x, m_p, logs_p, x_mask = self.text_encoder(text, text_lengths)
+        #x, m_p, logs_p, x_mask = self.text_encoder(text, text_lengths)
 
+        if self.use_lang_map:
+            x, m_p, logs_p, x_mask = self.text_encoder(text, text_lengths, lids)
+        else:
+            x, m_p, logs_p, x_mask = self.text_encoder(text, text_lengths)
         # calculate global conditioning
         g = None
         if self.spks is not None:
